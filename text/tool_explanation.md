@@ -1,0 +1,3 @@
+Great question! In a database, **n** methods have been categorized according to four design criteria: *qualitative / quantitative*, *inductive / deductive*, *individual / system / global scales*, and *past / present / future perspective*. (If you want to learn more about these criteria, visit the [Sustainability Methods Wiki](https://www.sustainabilitymethods.org).) The tool then evaluates which methods are most comparable to the ones you selected based on the [k-Nearest Neighbor](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm) algorithm.
+
+Below you see the profile of the selected methods (left) and the profile of the recommended methods as an overlay (right).
