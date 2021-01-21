@@ -2,6 +2,9 @@
 
 A k-Nearest Neighbor and Dash/Plotly based tool that creates profile of methods selected by the user and recommends other methods that they can learn based on their preferences.
 
+Main method used: [k-Nearest Neighbors Algorithm](https://en.wikipedia.org/wiki/K-nearest_neighbors_algorithm)  
+Main libraries used: `Dash`, `Plotly`, `scikit-learn`, and `pandas`
+
 This project was created for the lab of [Prof. Dr. Henrik von Wehrden](https://henrikvonwehrden.web.leuphana.de/henrik-von-wehrden/) where he and his team made the tool available to students in a methods based course.
 
 ## Contents
