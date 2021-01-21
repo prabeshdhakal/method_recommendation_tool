@@ -40,9 +40,10 @@ To run the app with the newly trained model based on the data used to train the 
 On your web browser, visit `localhost:8050`.
 
 ## TODOs
-1. [ ] Put the project on GitHub
+
+1. [x] Put the project on GitHub
 1. [ ] Make the font is consistent between MRT and Sustainability Methods Wiki (manual tweaking of the bootstrap theme)
+1. [x] For the bottom left plot: reverse the color
+1. [x] Change legend of the top plot to: "Profile of {}".format(selected_method)
+1. [x] Center the text in the table
 1. [ ] Ensure that the selected_method != recommended_method
-1. [ ] For the bottom left plot: reverse the color
-1. [ ] Change legend of the top plot to: "Profile of {}".format(selected_method)
-1. [ ] Center the text in the table

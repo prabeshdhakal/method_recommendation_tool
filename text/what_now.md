@@ -1,4 +1,4 @@
-You may never have heard about the methods that were recommended to you, or just realized that you need more experience with them. You can learn more about each methods on the *Sustainability Methods Wiki*, which provides a broad overview of each method alongside some helpful literature.
+You may never have heard about the methods that were recommended to you, or just realized that you need more experience with them. You can learn more about each method on the *Sustainability Methods Wiki*, which provides a broad overview of each method alongside some helpful literature.
 
 [**Click here to visit Sustainability Methods Wiki**](https://www.sustainabilitymethods.org)
 

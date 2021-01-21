@@ -44,7 +44,7 @@ def clean_methods_names(methods_array):
 
     """
     Remove underscores from, capitalize the 1st letters of, and
-    remove duplicates from a list of methods' names.
+    remove duplicates from a list of methods" names.
 
     Parameters:
         methods_array (list): the array of methods names that need to be cleaned.
@@ -169,9 +169,9 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
     """
 
     # column names for the original dataframe
-    DF_COLNAMES = ['Quantitative', 'Qualitative', 'Inductive', 'Deductive', 
-                   'Spatial_Global', 'Spatial_System', 'Spatial_Individual', 
-                   'Temporal_Past','Temporal_Present', 'Temporal_Future']
+    DF_COLNAMES = ["Quantitative", "Qualitative", "Inductive", "Deductive", 
+                   "Spatial_Global", "Spatial_System", "Spatial_Individual", 
+                   "Temporal_Past","Temporal_Present", "Temporal_Future"]
     
     fig = make_subplots(
         rows=2, cols=1,
@@ -189,12 +189,14 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
             header=dict(
                 values=["Recommended Methods"],
                 fill_color="lavender",
-                font=dict(family="Gravitas One", size=16)
+                font=dict(family="Gravitas One", size=16),
+                align="center"
             ),
             cells=dict(
                 values=[rec_methods],
                 fill_color="snow",
-                font=dict(family="Arial", size=14)
+                font=dict(family="Arial", size=14),
+                align="center"
             ),
         ),
         row=1, col=1
@@ -208,10 +210,10 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
             mode="lines+markers",
             line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),
             fillcolor="rgb(220, 5, 12)",
-            fill='toself',
+            fill="toself",
             hoverinfo=None,
             opacity=0.5,
-            name='Profile of Selected Methods',
+            name="Profile of {}".format(input_method),
             ),
             row=2, col=1
     )
@@ -224,10 +226,10 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
             mode="lines+markers",
             line=dict(smoothing=1.3, shape="spline", color="rgb(54, 75, 154)"),
             fillcolor="rgb(54, 75, 154)",
-            fill='toself',
+            fill="toself",
             hoverinfo=None,
             opacity=0.5,
-            name='Profile of Recommended Methods'
+            name="Profile of Recommended Methods"
             ),
             row=2, col=1
     )
@@ -257,8 +259,7 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
 def plot_profile_selected(input_profile):
 
     """
-    Plot the polar chart that contains the profile of the selected methods
-    and the profile of the recommended methods.
+    Plot the polar chart that contains the profile of only the selected methods.
 
     Parameters:
         input_profile (pandas df): the profile of methods out of 
@@ -270,9 +271,9 @@ def plot_profile_selected(input_profile):
     """
 
     # column names for the original dataframe
-    DF_COLNAMES = ['Quantitative', 'Qualitative', 'Inductive', 'Deductive', 
-                   'Spatial_Global', 'Spatial_System', 'Spatial_Individual', 
-                   'Temporal_Past','Temporal_Present', 'Temporal_Future']
+    DF_COLNAMES = ["Quantitative", "Qualitative", "Inductive", "Deductive", 
+                   "Spatial_Global", "Spatial_System", "Spatial_Individual", 
+                   "Temporal_Past","Temporal_Present", "Temporal_Future"]
 
     fig = go.Figure()
 
@@ -282,16 +283,23 @@ def plot_profile_selected(input_profile):
         r=input_profile.score,
         theta=DF_COLNAMES,
         mode="lines",
-        line=dict(smoothing=1.3, shape="spline", color="rgb(54, 75, 154)"),
-        fillcolor="rgb(54, 75, 154)",
-        fill='toself',
-        opacity=0.8,
-        name='Profile of Selected Methods',
+        line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),
+        fillcolor="rgb(220, 5, 12)",
+        fill="toself",
+        opacity=0.5,
+        name="Profile of Selected Methods",
         ),
     )
        
     # 2. Update Figure Layout
     fig.update_layout(
+        title=dict(
+            text="Profile of the Three Selected Methods",
+            xanchor="center",
+            yanchor="top",
+            x=0.5, 
+            y=0.9,
+        ),
         polar=dict(
             #bgcolor="rgb(242, 242, 242)",
             bgcolor="whitesmoke",
@@ -307,7 +315,7 @@ def plot_profile_selected(input_profile):
             #xanchor="center",
             x=0.25
             ),
-        margin=dict(l=85, r=80, t=0, b=0)
+        margin=dict(l=85, r=80, t=90, b=80)
         )
 
     return fig
@@ -327,12 +335,13 @@ def plot_profile_both(input_profile, output_profile):
     """
 
     # column names for the original dataframe
-    DF_COLNAMES = ['Quantitative', 'Qualitative', 'Inductive', 'Deductive', 
-                   'Spatial_Global', 'Spatial_System', 'Spatial_Individual', 
-                   'Temporal_Past','Temporal_Present', 'Temporal_Future']
+    DF_COLNAMES = ["Quantitative", "Qualitative", "Inductive", "Deductive", 
+                   "Spatial_Global", "Spatial_System", "Spatial_Individual", 
+                   "Temporal_Past","Temporal_Present", "Temporal_Future"]
 
     fig = go.Figure()
 
+    # 2.1 Polar Plot: Profile of ALL Selected Methods Combined
     fig.add_trace(
     go.Scatterpolar(
         r=input_profile.score,
@@ -340,13 +349,13 @@ def plot_profile_both(input_profile, output_profile):
         mode="lines",
         line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),
         fillcolor="rgb(220, 5, 12)",
-        fill='toself',
+        fill="toself",
         opacity=0.5,
-        name='Profile of Selected Methods',
+        name="Profile of All Selected Methods",
         ),
     )
     
-    # 2.2. Polar Plot: Output Profile
+    # 2.2. Polar Plot: Profile of ALL Predicted Methods Combined
     fig.add_trace(
         go.Scatterpolar(
             r=output_profile.score,
@@ -354,14 +363,21 @@ def plot_profile_both(input_profile, output_profile):
             mode="lines",
             line=dict(smoothing=1.3, shape="spline", color="rgb(54, 75, 154)"),
             fillcolor="rgb(54, 75, 154)",
-            fill='toself',
+            fill="toself",
             opacity=0.5,
-            name='Profile of Recommended Methods'
+            name="Profile of All Recommended Methods"
             ),
         )
     
     # 3. Update Figure Layout
     fig.update_layout(
+        title=dict(
+            text="Compare Profile of Selected vs. Recommended Methods",
+            xanchor="center",
+            yanchor="top",
+            x=0.5, 
+            y=0.9,
+        ),
         polar=dict(
             #bgcolor="rgb(242, 242, 242)",
             bgcolor="whitesmoke",
@@ -373,10 +389,10 @@ def plot_profile_both(input_profile, output_profile):
         legend=dict(
             orientation="h",
             yanchor="top",
-            y=0,
+            y=-0.05,
             x=0.25
             ),
-        margin=dict(l=85, r=80, t=0, b=30)
+        margin=dict(l=85, r=80, t=90, b=80)
         )
 
     return fig
@@ -402,19 +418,21 @@ def plot_table(selected_methods, rec_methods):
             header=dict(
                 values=["Selected Methods", "Recommended Methods"],
                 fill_color="lavender",
-                font=dict(family="Gravitas One", size=16)
+                font=dict(family="Gravitas One", size=16),
+                align="center"
             ),
             cells=dict(
                 values=[selected_methods, rec_methods],
                 fill_color="snow",
-                font=dict(family="Arial", size=14)
+                font=dict(family="Arial", size=14),
+                align="center"
             ),
         ),
     )
 
     # 2. Update Figure Layout
     fig.update_layout(
-        margin=dict(l=20, r=20, t=25, b=20)
+        margin=dict(l=5, r=5, t=25, b=10)
     )
 
     return fig

@@ -118,12 +118,14 @@ final_plots_row = html.Div(
         dbc.Row(
             [
                 dbc.Col(html.Div(dcc.Graph(id="plot_selected_methods_profile"))),
-                dbc.Col(html.Div(dcc.Graph(id="plot_table"))),
+                #dbc.Col(html.Div(dcc.Graph(id="plot_table"))),
                 dbc.Col(html.Div(dcc.Graph(id="plot_both_profiles"))),
             ]
         ),
     ]
 )
+
+final_table_bottom = dcc.Graph(id="plot_table")
 
 # 7. THE MAIN APP
 
@@ -139,7 +141,7 @@ app.layout = dbc.Container(
         # 1.1 Introduction to the tool
         html.H3("Welcome to the Method Recommendation Tool!", style={"textAlign":"center"}),
         html.Br(),
-        html.P("Choose three scientific methods that you are familiar wtih. Than, the tool will recommend you five new methods each to explore.", style={"textAlign":"center"}),
+        html.P("Choose three scientific methods that you are familiar with. Then, the tool will recommend you five new methods each to explore.", style={"textAlign":"center"}),
 
         # 2. Method Selection Dropdown Tools
         html.H3(children="Select 3 Methods", style={"textAlign":"center"}),
@@ -163,7 +165,13 @@ app.layout = dbc.Container(
         dcc.Markdown(explanation, style={"textAlign":"center"}),
 
         # 6. Final chart with Overall Profile and Profile Overlay + Recs.
-        final_plots_row
+        html.Br(),
+        final_plots_row,
+
+        # 7. Plot the final Selection Profiles and Recommendation Profiles
+        html.Br(),
+        html.P("Here are all the methods that you selected and that were recommended by our tool:", style={"textAlign":"center"}),
+        final_table_bottom
 
     ]
 )
