@@ -1,3 +1,16 @@
+import os
+os.environ['OPENBLAS_NUM_THREADS'] = '1'
+
+# Define the server and the app
+import flask
+
+server = flask.Flask(__name__) # define flask app.server
+server.suppress_callback_exceptions = True
+
+app = dash.Dash(__name__, external_stylesheets=[dbc.themes.JOURNAL], requests_pathname_prefix="/method_recommendation_tool/", server=server)
+# ----
+
+
 import pickle
 import datetime
 import numpy as np
@@ -129,8 +142,6 @@ final_plots_row = html.Div(
 final_table_bottom = dcc.Graph(id="plot_table")
 
 # 7. THE MAIN APP
-
-app = dash.Dash(external_stylesheets=[dbc.themes.JOURNAL])
 
 app.layout = dbc.Container(
     children=[
@@ -297,4 +308,4 @@ def update_both_profiles(method_0, method_1, method_2):
 
 
 if __name__ == "__main__":
-    app.run_server(debug=True)
+    app.run_server()
