@@ -11,7 +11,7 @@ import dash_bootstrap_components as dbc
 
 app = dash.Dash(
     __name__,
-    external_stylesheets=[dbc.themes.LITERA], # alternative theme = LITERA
+    external_stylesheets=[dbc.themes.JOURNAL], # alternative theme = LITERA
     #requests_pathname_prefix="/method_recommendation_tool/",  # uncomment for deployment
     #server=server  # uncomment for deployment
 )
