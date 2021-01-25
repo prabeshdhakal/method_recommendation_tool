@@ -1,24 +1,27 @@
 import os
-os.environ['OPENBLAS_NUM_THREADS'] = '1'
+#os.environ['OPENBLAS_NUM_THREADS'] = '1'  # uncomment for deployment
 
 # Define the server and the app
 import flask
+import dash
+import dash_bootstrap_components as dbc
 
-server = flask.Flask(__name__) # define flask app.server
-server.suppress_callback_exceptions = True
+#server = flask.Flask(__name__)  # uncomment for deployment
+#server.suppress_callback_exceptions = True  # uncomment for deployment
 
-app = dash.Dash(__name__, external_stylesheets=[dbc.themes.JOURNAL], requests_pathname_prefix="/method_recommendation_tool/", server=server)
+app = dash.Dash(
+    __name__,
+    external_stylesheets=[dbc.themes.LITERA], # alternative theme = LITERA
+    #requests_pathname_prefix="/method_recommendation_tool/",  # uncomment for deployment
+    #server=server  # uncomment for deployment
+)
 # ----
-
-
 import pickle
 import datetime
 import numpy as np
 import pandas as pd
 
 # Plotly, Dash, and Dash Bootstrap Components
-import dash
-import dash_bootstrap_components as dbc
 import dash_core_components as dcc
 import dash_html_components as html
 from dash.dependencies import Input, Output
@@ -45,11 +48,14 @@ df = raw_df.copy().set_index("Method").fillna(0)
 methods_names = raw_df.Method
 
 # 3. READ TEXT FROM FILES
-with open("text/what_now.md", "r") as f:
-    what_now = f.read()
+with open("text/what_now.md", "r") as file:
+    what_now = file.read()
 
-with open("text/tool_explanation.md", "r") as f:
-    explanation = f.read()
+with open("text/tool_explanation.md", "r") as file:
+    explanation = file.read()
+
+with open("text/copyright_notice.md", "r") as file:
+    copyright = file.read()
 
 # 4. DEFINE DROPDOWN OPTIONS
 
@@ -183,7 +189,10 @@ app.layout = dbc.Container(
         # 7. Plot the final Selection Profiles and Recommendation Profiles
         html.Br(),
         html.P("Here are all the methods that you selected and that were recommended by our tool:", style={"textAlign":"center"}),
-        final_table_bottom
+        final_table_bottom,
+
+        # Footer
+        html.Footer(dcc.Markdown(copyright), style={"textAlign":"center"})
 
     ]
 )

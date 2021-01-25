@@ -284,7 +284,7 @@ def plot_profile_selected(input_profile):
         r=input_profile.score,
         theta=DF_COLNAMES,
         mode="lines",
-        line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),
+        line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"), # yellow: rgb(255, 211, 0)
         fillcolor="rgb(220, 5, 12)",
         fill="toself",
         opacity=0.5,
