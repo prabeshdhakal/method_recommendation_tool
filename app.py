@@ -193,16 +193,16 @@ app.layout = dbc.Container(
         html.P("Here are all the methods that you selected and that were recommended by our tool:", style={"textAlign":"center"}),
         final_table_bottom,
 
-        # Footer
+        # 8. Footer
         html.Footer(dcc.Markdown(copyright), style={"textAlign":"center"})
 
     ]
 )
 
-# 8. CALLBACKs (look up dash documentation to learn more)
+# 9. CALLBACKs (look up dash documentation to learn more)
 # short story short: callbacks enable dynamic updates of dropdowns and plotly charts
 
-# 8.1 top left dropdown/table/plot
+# 9.1 top left dropdown/table/plot
 @app.callback(
     Output("plot_0", "figure"),
     [Input("method_0", "value")]
@@ -220,7 +220,7 @@ def update_rec_plot_0(method_0):
     
     return rec_plot_table(selected_method_clean, input_profile, output_profile, rec_methods)
 
-# 8.2 top middle dropdown/table/plot
+# 9.2 top middle dropdown/table/plot
 @app.callback(
     Output("plot_1", "figure"),
     [Input("method_1", "value")]
@@ -238,7 +238,7 @@ def update_rec_plot_1(method_1):
     
     return rec_plot_table(selected_method_clean, input_profile, output_profile, rec_methods)
 
-# 8.3 top right dropdown/table/plot
+# 9.3 top right dropdown/table/plot
 @app.callback(
     Output("plot_2", "figure"),
     [Input("method_2", "value")]
@@ -256,7 +256,7 @@ def update_rec_plot_2(method_2):
     
     return rec_plot_table(selected_method_clean, input_profile, output_profile, rec_methods)
 
-# 8.4 bottom left plot
+# 9.4 bottom left plot
 @app.callback(
     Output("plot_selected_methods_profile", "figure"),
     [
@@ -274,7 +274,7 @@ def update_selected_method_profile(method_0, method_1, method_2):
 
     return plot_profile_selected(input_profile)
 
-# 8.5 bottom middle table
+# 9.5 bottom middle table
 @app.callback(
     Output("plot_table", "figure"),
     [
@@ -295,7 +295,7 @@ def update_table(method_0, method_1, method_2):
 
     return plot_table(selected_methods_clean, rec_methods)
 
-# 8.6 bottom right plot
+# 9.6 bottom right plot
 @app.callback(
     Output("plot_both_profiles", "figure"),
     [

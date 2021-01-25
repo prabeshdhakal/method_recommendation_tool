@@ -209,8 +209,10 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
             r=input_profile.score,
             theta=DF_COLNAMES,
             mode="lines+markers",
-            line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),
-            fillcolor="rgb(220, 5, 12)",
+            #line=dict(smoothing=1.3, shape="spline", color="rgb(220, 5, 12)"),  # red
+            line=dict(smoothing=1.3, shape="spline", color="rgb(255, 211, 0)"),  # yellow
+            #fillcolor="rgb(220, 5, 12)",
+            fillcolor="rgb(255, 211, 0)",  # yellow
             fill="toself",
             hoverinfo=None,
             opacity=0.5,
@@ -229,7 +231,7 @@ def rec_plot_table(input_method, input_profile, output_profile, rec_methods):
             fillcolor="rgb(54, 75, 154)",
             fill="toself",
             hoverinfo=None,
-            opacity=0.5,
+            opacity=0.75,
             name="Profile of Recommended Methods"
             ),
             row=2, col=1
