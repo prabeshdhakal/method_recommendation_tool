@@ -433,7 +433,7 @@ def plot_table(selected_methods, rec_methods):
 
     # 2. Update Figure Layout
     fig.update_layout(
-        margin=dict(l=5, r=5, t=25, b=10)
+        margin=dict(l=25, r=25, t=25, b=0)
     )
 
     return fig

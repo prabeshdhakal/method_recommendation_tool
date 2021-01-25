@@ -149,6 +149,8 @@ final_table_bottom = dcc.Graph(id="plot_table")
 
 # 7. THE MAIN APP
 
+app.title = "Method Recommendation Tool | Sustainability Methods Wiki"
+
 app.layout = dbc.Container(
     children=[
         # 1. Page Heading
