@@ -440,7 +440,7 @@ def plot_table(selected_methods, rec_methods):
 
     return fig
 
-def train_model(data, n_neighbors=6, metric="cosine", save_file=None):
+def train_model(data_file, n_neighbors=6, metric="cosine", save_file=None):
     """
     Train a kNN model based on the supplied data. Optionally, save
     the model into a pickled file.
@@ -452,6 +452,9 @@ def train_model(data, n_neighbors=6, metric="cosine", save_file=None):
         save_file (str, optional): file name for the pickle file (eg. model.pkl). Defaults to None.
     
     """
+    data = "./data/" + data_file
+    save_path = "./models/" + save_file
+
     # load the data
     df = pd.read_excel(data, index_col="Method").fillna(0)
 
@@ -461,5 +464,5 @@ def train_model(data, n_neighbors=6, metric="cosine", save_file=None):
 
     # save the model
     if save_file:
-        with open(save_file, "wb") as f:
-            pickle.dump(knn, f)
+        with open(save_path, "wb") as file:
+            pickle.dump(knn, file)
