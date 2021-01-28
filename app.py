@@ -164,8 +164,8 @@ app.layout = dbc.Container(
         html.P("Choose three scientific methods that you are familiar with. Then, the tool will recommend you five new methods each to explore.", style={"textAlign":"center"}),
 
         # 2. Method Selection Dropdown Tools
-        html.H3(children="Select 3 Methods", style={"textAlign":"center"}),
-        html.P("Choose 3 methods that you found interesting during the semester.", style={"textAlign":"center"}),
+        html.H4(children="Select 3 Methods", style={"textAlign":"center"}),
+        #html.P("Choose 3 methods that you found interesting during the semester.", style={"textAlign":"center"}),
         dropdown_row, ### DROPDOWN
         #html.Br(),
         html.Br(),
